@@ -1,0 +1,17 @@
+{
+  "name": "coronabot",
+  "version": "1.0.0",
+  "description": "Corona Slack Bot",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Julian Ravn Thrap-Meyer <jr@thrap-meyer.no>",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/web-api": "^5.8.0",
+    "node-fetch": "^2.6.0"
+  }
+}
