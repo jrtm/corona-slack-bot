@@ -77,8 +77,14 @@ const tick = (function() {
       return;
     }
 
-    if (lastData && stats.infected - lastData.infected < Config.NEW_LIMIT) {
-      console.log("Not interesting enough yet ...");
+    if (
+      lastData &&
+      stats.infected - lastData.infected < Config.NEW_LIMIT &&
+      stats.dead === lastData.dead
+    ) {
+      console.log(
+        `Not interesting enough yet ... (${stats.infected} infected now)`
+      );
       return;
     }
 
