@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+   coronatripletex:
+     image: corona-slack-bot:latest
+     environment:
+            BOT_NAME : 
+            CHANNEL : 
+            SLACK_KEY : 
+     restart: always
+
