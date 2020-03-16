@@ -63,8 +63,12 @@ async function getVgApiData() {
 
 const tick = (function() {
   let lastData = null;
+  let lastTime = 0;
+
+  const maxWaitTime = 4 * 60 * 60 * 1000;
 
   return async () => {
+    console.log(`[${new Date()}] Looking for updates`);
     const stats = await getCoronaStats();
 
     if (
@@ -77,10 +81,13 @@ const tick = (function() {
       return;
     }
 
+    const now = Date.now();
+
     if (
       lastData &&
       stats.infected - lastData.infected < Config.NEW_LIMIT &&
-      stats.dead === lastData.dead
+      stats.dead === lastData.dead &&
+      now < lastTime + maxWaitTime
     ) {
       console.log(
         `Not interesting enough yet ... (${stats.infected} infected now)`
@@ -88,6 +95,7 @@ const tick = (function() {
       return;
     }
 
+    lastTime = now;
     lastData = stats;
 
     console.log("New data: ", stats);
