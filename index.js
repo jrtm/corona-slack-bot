@@ -47,7 +47,7 @@ const getCoronaStats = (function() {
 
 async function getVgApiData() {
   const resp = await fetch(
-    "https://www.vg.no/spesial/2020/corona-viruset/data/norway-region-data/"
+    "https://redutv-api.vg.no/corona/v1/sheets/norway-region-data"
   );
   const data = await resp.json();
 
